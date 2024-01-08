@@ -21,17 +21,17 @@ public class BeU2W1D1Application {
         System.out.println("----Pizze nel menu: ----");
 
         for (Pizza pizza : m.getPizzas()) {
-            System.out.println("Pizza: " + pizza.getPizzaName());
+            System.out.println("Pizza: " + pizza.getPizzaName() + ", " + "Price: " + pizza.getPrice() + ", " + "Calories: " + pizza.getCalories());
         }
 
         System.out.println("----Toppings nel menu: ----");
         for (Toppings toppings : m.getToppings()) {
-            System.out.println("Topping: " + toppings.getToppingName());
+            System.out.println("Topping: " + toppings.getToppingName() + ", " + "Price: " + toppings.getPrice() + ", " + "Calories: " + toppings.getCalories());
         }
 
         System.out.println("----Drinks nel menu: ----");
         for (Drinks drinks : m.getDrinks()) {
-            System.out.println("Drink: " + drinks.getDrinkName());
+            System.out.println("Drink: " + drinks.getDrinkName() + ", " + "Price: " + drinks.getPrice() + ", " + "Calories: " + drinks.getCalories());
         }
     }
 
