@@ -9,6 +9,7 @@ import ygorgarofalo.BEU2W1D1.entities.Pizza;
 import ygorgarofalo.BEU2W1D1.entities.Toppings;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -39,6 +40,7 @@ public class BeU2W1D1Application {
         for (Drinks drinks : m.getDrinks()) {
             System.out.println("Drink: " + drinks.getDrinkName() + ", " + "Price: " + drinks.getPrice() + ", " + "Calories: " + drinks.getCalories());
         }
+        ctx.close();
 
 
         placeOrder();
@@ -74,108 +76,114 @@ public class BeU2W1D1Application {
         System.out.println("2 - Hawaiian");
         System.out.println("3 - Salami");
 
-        int choosenPizzas = userInput.nextInt();
+        try {
+            int choosenPizzas = userInput.nextInt();
 
-        switch (choosenPizzas) {
-            case 1: {
-                pizzaList.add(margheritaPizza);
-                break;
-            }
-            case 2: {
-                pizzaList.add(hawaiianPizza);
-                break;
-            }
-            case 3: {
-                pizzaList.add(salamiPizza);
-                break;
-            }
-            default:
-                System.out.println("Comando non riconosciuto");
-        }
-
-
-        System.out.println("Quale drink vuoi?");
-        System.out.println("1 - Lemonade");
-        System.out.println("2 - Water");
-        System.out.println("3 - Wine");
-
-        List<Drinks> drinksList = new ArrayList<>();
-        int choosenDrink = userInput.nextInt();
-
-
-        switch (choosenDrink) {
-            case 1:
-                drinksList.add(lemonade);
-                break;
-            case 2:
-                drinksList.add(water);
-                break;
-            case 3:
-                drinksList.add(wine);
-                break;
-            default:
-                System.out.println("Comando non riconosciuto");
-        }
-
-
-        System.out.println("Vuoi aggiungere un extra topping? Premi 1 per SI o 2 per NO");
-        int choosenOption = userInput.nextInt();
-
-        switch (choosenOption) {
-            case 1: {
-                System.out.println("Cosa vuoi aggiungere?");
-                System.out.println("1 - Cheese");
-                System.out.println("2 - Ham");
-                System.out.println("3 - Onions");
-                System.out.println("4 - Pineapple");
-                System.out.println("5 - Salami");
-
-                int choosenTopping = userInput.nextInt();
-
-                switch (choosenTopping) {
-                    case 1: {
-                        pizzaList.get(0).addTopping(cheese);
-                        System.out.println("Totale da pagare: " + (pizzaList.get(0).getPrice() + cheese.getPrice() + drinksList.get(0).getPrice()));
-                        break;
-                    }
-                    case 2: {
-                        pizzaList.get(0).addTopping(ham);
-                        System.out.println("Totale da pagare: " + (pizzaList.get(0).getPrice() + ham.getPrice() + drinksList.get(0).getPrice()));
-
-                        break;
-                    }
-                    case 3: {
-                        pizzaList.get(0).addTopping(onions);
-                        System.out.println("Totale da pagare: " + (pizzaList.get(0).getPrice() + onions.getPrice() + drinksList.get(0).getPrice()));
-
-                        break;
-                    }
-                    case 4: {
-                        pizzaList.get(0).addTopping(pineapple);
-                        System.out.println("Totale da pagare: " + (pizzaList.get(0).getPrice() + pineapple.getPrice() + drinksList.get(0).getPrice()));
-
-                        break;
-                    }
-                    case 5: {
-                        pizzaList.get(0).addTopping(salami);
-                        System.out.println("Totale da pagare: " + (pizzaList.get(0).getPrice() + salami.getPrice() + drinksList.get(0).getPrice()));
-
-                        break;
-                    }
-                    default:
-                        System.out.println("Comando non riconosciuto");
+            switch (choosenPizzas) {
+                case 1: {
+                    pizzaList.add(margheritaPizza);
+                    break;
                 }
+                case 2: {
+                    pizzaList.add(hawaiianPizza);
+                    break;
+                }
+                case 3: {
+                    pizzaList.add(salamiPizza);
+                    break;
+                }
+                default:
+                    System.out.println("Comando non riconosciuto");
             }
-            break;
 
-            case 2: {
-                System.out.println("Ok, totale da pagare: " + (pizzaList.get(0).getPrice() + drinksList.get(0).getPrice()) + " $");
+
+            System.out.println("Quale drink vuoi?");
+            System.out.println("1 - Lemonade");
+            System.out.println("2 - Water");
+            System.out.println("3 - Wine");
+
+            List<Drinks> drinksList = new ArrayList<>();
+            int choosenDrink = userInput.nextInt();
+
+
+            switch (choosenDrink) {
+                case 1:
+                    drinksList.add(lemonade);
+                    break;
+                case 2:
+                    drinksList.add(water);
+                    break;
+                case 3:
+                    drinksList.add(wine);
+                    break;
+                default:
+                    System.out.println("Comando non riconosciuto");
+            }
+
+
+            System.out.println("Vuoi aggiungere un extra topping? Premi 1 per SI o 2 per NO");
+            int choosenOption = userInput.nextInt();
+
+            switch (choosenOption) {
+                case 1: {
+                    System.out.println("Cosa vuoi aggiungere?");
+                    System.out.println("1 - Cheese");
+                    System.out.println("2 - Ham");
+                    System.out.println("3 - Onions");
+                    System.out.println("4 - Pineapple");
+                    System.out.println("5 - Salami");
+
+                    int choosenTopping = userInput.nextInt();
+
+                    switch (choosenTopping) {
+                        case 1: {
+                            pizzaList.get(0).addTopping(cheese);
+                            System.out.println("Totale da pagare: " + (pizzaList.get(0).getPrice() + cheese.getPrice() + drinksList.get(0).getPrice()));
+                            break;
+                        }
+                        case 2: {
+                            pizzaList.get(0).addTopping(ham);
+                            System.out.println("Totale da pagare: " + (pizzaList.get(0).getPrice() + ham.getPrice() + drinksList.get(0).getPrice()));
+
+                            break;
+                        }
+                        case 3: {
+                            pizzaList.get(0).addTopping(onions);
+                            System.out.println("Totale da pagare: " + (pizzaList.get(0).getPrice() + onions.getPrice() + drinksList.get(0).getPrice()));
+
+                            break;
+                        }
+                        case 4: {
+                            pizzaList.get(0).addTopping(pineapple);
+                            System.out.println("Totale da pagare: " + (pizzaList.get(0).getPrice() + pineapple.getPrice() + drinksList.get(0).getPrice()));
+
+                            break;
+                        }
+                        case 5: {
+                            pizzaList.get(0).addTopping(salami);
+                            System.out.println("Totale da pagare: " + (pizzaList.get(0).getPrice() + salami.getPrice() + drinksList.get(0).getPrice()));
+
+                            break;
+                        }
+                        default:
+                            System.out.println("Comando non riconosciuto");
+                    }
+                }
                 break;
-            }
-            default:
-                System.out.println("Comando non riconosciuto");
-        }
 
+                case 2: {
+                    System.out.println("Ok, totale da pagare: " + (pizzaList.get(0).getPrice() + drinksList.get(0).getPrice()) + " $");
+                    break;
+                }
+                default:
+                    System.out.println("Comando non riconosciuto");
+            }
+          
+        } catch (InputMismatchException e) {
+            System.out.println("Valore inserito non valido");
+        }
+        ctx.close();
+        userInput.close();
 
     }
 
