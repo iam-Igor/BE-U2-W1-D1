@@ -11,7 +11,7 @@ public class Pizza {
 
     private int calories;
 
-    private Toppings topping;
+    private Toppings topping = null;
 
     public Pizza(String pizzaName) {
         this.pizzaName = pizzaName;
@@ -19,6 +19,7 @@ public class Pizza {
         this.additionalIngredients = setAdditionalIngredients();
         this.price = setPrice();
         this.calories = setCalories();
+        this.topping = getTopping();
     }
 
     public Toppings getTopping() {
